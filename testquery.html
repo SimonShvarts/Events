@@ -27,7 +27,7 @@
 
   //var queryText = encodeURIComponent(query);
   var gvizQuery = new google.visualization.Query('https://docs.google.com/spreadsheets/d/1EsP44Nq422D0lDfoDBfbJDfGgt7DwS9U9BgGcneCeIY/edit#gid=1819578631');
-  var queryText = 'select A,B,O,P where C =  date ' + l;
+  var queryText = 'select A,B,I,O,P where C =  date ' + l;
 	gvizQuery.setQuery(queryText);
   gvizQuery.send(handleQueryResponse);
 
@@ -44,6 +44,7 @@ function handleQueryResponse(response) {
     var chart = new google.visualization.Timeline(container);
 
     var data = response.getDataTable();
+    data.setColumnProperty(2, 'role','tooltip');
    var options = {
       timeline: { colorByRowLabel: false },
       backgroundColor: '#ffd'
